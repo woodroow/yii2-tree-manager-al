@@ -34,6 +34,8 @@ class CreateNodeAction extends BaseAction
         if (isset($roots[0])) {
             return $model->appendTo($roots[0])->save();
         } else {
+            
+            $model->name = 'node 1.1';
             return $model->makeRoot()->save();
         }
     }

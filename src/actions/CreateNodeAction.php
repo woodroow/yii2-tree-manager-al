@@ -33,7 +33,7 @@ class CreateNodeAction extends BaseAction
         $roots = $model::find()->roots()->all();
 
         if (isset($roots[0])) {
-            $name = Yii::$app->request->post('name');
+            $name = Yii::$app->request->post('StructureAL[name]');
             $model->name = $name;
             return $model->appendTo($roots[0])->save();
         } else {

@@ -13,6 +13,7 @@ use yii\web\HttpException;
  */
 class CreateNodeAction extends BaseAction
 {
+    public $nameAttribute = 'name';
     /**
      * @return null
      * @throws HttpException
@@ -32,7 +33,8 @@ class CreateNodeAction extends BaseAction
         $roots = $model::find()->roots()->all();
 
         if (isset($roots[0])) {
-            $model->name = 'node 1.1';
+            $name = Yii::$app->request->post('name');
+            $model->name = $name;
             return $model->appendTo($roots[0])->save();
         } else {
             return $model->makeRoot()->save();
